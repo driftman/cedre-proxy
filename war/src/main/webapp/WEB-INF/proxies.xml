@@ -1,0 +1,190 @@
+<spring:beans xmlns="http://membrane-soa.org/proxies/1/"
+	xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:web="http://membrane-soa.org/war/1/"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+					    http://membrane-soa.org/proxies/1/ http://membrane-soa.org/schemas/proxies-1.xsd
+					    http://membrane-soa.org/war/1/ http://membrane-soa.org/schemas/war-1.xsd">
+      	
+
+	<limitedMemoryExchangeStore id="memoryExchangeStore" />
+
+	<router hotDeploy="false" exchangeStore="memoryExchangeStore">
+
+		<web:servletTransport id="transport">
+			<headerFilter>
+				<exclude>Connection</exclude>
+				<exclude>Content-Encoding</exclude>
+				<exclude>Content-Length</exclude>
+				<exclude>Content-MD5</exclude>
+				<exclude>Server</exclude>
+				<exclude>Transfer-Encoding</exclude>
+				<exclude>X-Powered-By</exclude>
+			</headerFilter>
+			<ruleMatching />
+			<exchangeStore name="memoryExchangeStore" />
+			<dispatching />
+			<reverseProxying />
+			<userFeature />
+			<httpClient />
+		</web:servletTransport>
+	
+	
+		<!-- Sets up the Administration Web Interface below "/admin". -->
+	    <serviceProxy>
+	    	<path isRegExp="true">^/admin.*</path>
+	    	<basicAuthentication>
+				<user name="admin" password="membrane" />
+			</basicAuthentication>	
+			<adminConsole />
+	    </serviceProxy>
+
+	    <!-- Forwards all other requests --> 
+		<serviceProxy port="4000">
+			<log/>
+			<rest2Soap>	
+			<!--Requêtes de récupération-->	
+				<mapping regex="/getVersion/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/getVersion.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" /> 
+				<mapping regex="/listerAdmission/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/listerAdmission.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/listerCabObjet/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/listerCabObjet.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />		
+				<mapping regex="/listerClientCoclico/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/listerClientCoclico.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />					 
+				<mapping regex="/listerPlageScoutPagine/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/listerPlageScoutPagine.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />	
+				<mapping regex="/listerCompteScoutPagine/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/listerCompteScoutPagine.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/listerContenants/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/listerContenants.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/listerContratsColiposteInterditsPagine/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/listerContratsColiposteInterditsPagine.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/listerCritereControle/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/listerCritereControle.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/listerDeclareElectronique/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/listerDeclareElectronique.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/listerDeclareManuel/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/listerDeclareManuel.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/listerDepot/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/listerDepot.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/listerGazette/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/listerGazette.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/listerHistoriqueStatutDepot/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/listerHistoriqueStatutDepot.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/listerInfoDeport/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/listerInfoDeport.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/listerProduitSIO/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/listerProduitSIO.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/listerSequenceDeclareElectronique/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/listerSequenceDeclareElectronique.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/listerSequenceDeclareManuel/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/listerSequenceDeclareManuel.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/listerSequencesContratsColiposte/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/listerSequencesContratsColiposte.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/listerSitesFavoris/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/listerSitesFavoris.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/listerSuivi/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/listerSuivi.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/obtenirDateDuJour/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/obtenirDateDuJour.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/obtenirIdentifiantPDA/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationSIPDARecuperation" 
+					requestXSLT="./cedre/recuperation/obtenirIdentifiantPDA.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+			<!--Requêtes d'envoi-->		
+				<mapping regex="/journaliserSynchro/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationPDASIEnvoi" 
+					requestXSLT="./cedre/envoi/journaliserSynchro.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/seq00_CommencerEnvoi/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationPDASIEnvoi" 
+					requestXSLT="./cedre/envoi/seq00_CommencerEnvoi.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/seq01_EnregistrerDepots/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationPDASIEnvoi" 
+					requestXSLT="./cedre/envoi/seq01_EnregistrerDepots.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/seq02_EnregistrerHistoriquesStatutsDepots/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationPDASIEnvoi" 
+					requestXSLT="./cedre/envoi/seq02_EnregistrerHistoriquesStatutsDepots.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/seq03_EnregistrerDeclaresManuel/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationPDASIEnvoi" 
+					requestXSLT="./cedre/envoi/seq03_EnregistrerDeclaresManuel.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/seq04_EnregistrerAdmissions/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationPDASIEnvoi" 
+					requestXSLT="./cedre/envoi/seq04_EnregistrerAdmissions.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/seq05_EnregistrerInformationsDeport/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationPDASIEnvoi" 
+					requestXSLT="./cedre/envoi/seq05_EnregistrerInformationsDeport.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/seq06_EnregistrerSuivi/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationPDASIEnvoi" 
+					requestXSLT="./cedre/envoi/seq06_EnregistrerSuivi.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/seq07_EnregistrerCabObjet/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationPDASIEnvoi" 
+					requestXSLT="./cedre/envoi/seq07_EnregistrerCabObjet.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/seq08_EnregistrerCabRecap/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationPDASIEnvoi" 
+					requestXSLT="./cedre/envoi/seq08_EnregistrerCabRecap.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+				<mapping regex="/seq09_TerminerEnvoi/.*" soapAction=""
+					soapURI="/CedreWebService/services/WSSynchronisationPDASIEnvoi" 
+					requestXSLT="./cedre/envoi/seq09_TerminerEnvoi.xsl"
+					responseXSLT="./cedre/cedreResponse.xsl" />
+			</rest2Soap>
+			<log/>
+			<target host="10.89.156.154" port="9081" />
+		</serviceProxy>
+	</router>
+
+</spring:beans>

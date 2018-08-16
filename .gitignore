@@ -1,0 +1,111 @@
+# any VIM swap file
+.*.swp
+_*.swp
+
+# /
+/target
+/membrane.log
+/.settings
+/.project
+/.metadata
+/.DS_Store
+*.iml
+*.eml
+*.idea
+/.m2
+
+# /annot/
+/annot/.classpath
+/annot/.project
+/annot/.settings
+/annot/target
+
+# /cli/
+/cli/.classpath
+/cli/.project
+/cli/.settings
+/cli/target
+/cli/memrouter.log
+/cli/membrane.log
+/cli/derby.log
+/cli/executable.ps1
+/cli/log.csv
+
+# /cli/examples/router/custom-interceptor/
+/cli/examples/router/custom-interceptor/dist
+
+# /cli/examples/router/loadbalancer-session-3/
+/cli/examples/router/loadbalancer-session-3/build
+
+# /cli/examples/router/versioning/routing/
+/cli/examples/router/versioning/routing/build
+
+# /cli/examples/router/versioning/xslt/
+/cli/examples/router/versioning/xslt/build
+
+# /core/
+/core/.apt_generated
+/core/.classpath
+/core/.project
+/core/target
+/core/.settings
+/core/temp
+/core/.DS_Store
+
+# /maven-plugin
+/maven-plugin/target
+
+# /distribution/
+/distribution/.classpath
+/distribution/.project
+/distribution/.settings
+/distribution/target
+/distribution/memrouter.log
+/distribution/membrane.log
+/distribution/derby.log
+/distribution/log.csv
+/distribution/examples/router/custom-interceptor/dist
+/distribution/examples/router/loadbalancer-session-3/build
+/distribution/examples/router/versioning/routing/build
+/distribution/examples/router/versioning/xslt/build
+/distribution/executable-*.pid
+/distribution/executable_launcher.sh
+
+# /osgi/
+/osgi/.classpath
+/osgi/.project
+/osgi/target
+/osgi/.settings
+
+# /osgi-extender/
+/osgi-extender/.settings
+/osgi-extender/.classpath
+/osgi-extender/target
+/osgi-extender/.project
+
+# /sar/
+/sar/.settings
+/sar/.classpath
+/sar/.project
+/sar/target
+
+# /test/
+/test/.settings
+/test/.project
+/test/.classpath
+/test/target
+
+# /war/
+/war/.apt_generated
+/war/.classpath
+/war/.project
+/war/target
+/war/.settings
+/war/memrouter.log
+
+
+# Intellj
+.idea
+maven-plugin/target/surefire/
+/distribution/conf/consentFile.json
+/distribution/conf/logindialog/

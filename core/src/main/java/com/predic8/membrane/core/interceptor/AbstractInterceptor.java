@@ -1,0 +1,133 @@
+/* Copyright 2009, 2012 predic8 GmbH, www.predic8.com
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License. */
+
+package com.predic8.membrane.core.interceptor;
+
+import java.util.EnumSet;
+
+import com.predic8.membrane.annot.MCAttribute;
+import com.predic8.membrane.annot.MCElement;
+import com.predic8.membrane.core.Router;
+import com.predic8.membrane.core.exchange.Exchange;
+import com.predic8.membrane.core.interceptor.flow.AbstractFlowInterceptor;
+import com.predic8.membrane.core.rules.Rule;
+
+public class AbstractInterceptor implements Interceptor {
+
+	protected String name = this.getClass().getName();
+
+	private EnumSet<Flow> flow = Flow.Set.REQUEST_RESPONSE;
+
+	protected String id;
+
+	protected Router router;
+
+	public AbstractInterceptor() {
+		super();
+	}
+
+	public Outcome handleRequest(Exchange exc) throws Exception {
+		return Outcome.CONTINUE;
+	}
+
+	public Outcome handleResponse(Exchange exc) throws Exception {
+		return Outcome.CONTINUE;
+	}
+
+	public void handleAbort(Exchange exchange) {
+		// do nothing
+	}
+
+	public String getDisplayName() {
+		return name;
+	}
+
+	public void setDisplayName(String name) {
+		this.name = name;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	@MCAttribute
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void setFlow(EnumSet<Flow> flow) {
+		this.flow = flow;
+	}
+
+
+	public EnumSet<Flow> getFlow() {
+		return flow;
+	}
+
+	@Override
+	public String getShortDescription() {
+		return "";
+	}
+
+	@Override
+	public String getLongDescription() {
+		return getShortDescription();
+	}
+
+	@Override
+	public final String getHelpId() {
+		MCElement annotation = getClass().getAnnotation(MCElement.class);
+		if (annotation == null)
+			return null;
+		return annotation.name();
+	}
+
+	/**
+	 * Called after parsing is complete and this has been added to the object tree (whose root is Router).
+	 */
+	public void init() throws Exception {
+		// do nothing here - override in subclasses.
+	}
+
+	public void init(Router router) throws Exception {
+		this.router = router;
+		init();
+	}
+
+	public <T extends Rule> T getRule(){
+		return (T)getRouter()
+				.getRuleManager()
+				.getRules()
+				.stream()
+				.filter(rule -> rule
+						.getInterceptors()
+						.stream()
+						.filter(interceptor -> hasSameReferenceAs(interceptor))
+						.count() > 0)
+				.findAny()
+				.get();
+	}
+
+	private boolean hasSameReferenceAs(Interceptor i){
+		if(i instanceof AbstractFlowInterceptor){
+			return ((AbstractFlowInterceptor) i).getInterceptors().stream().filter(interceptor -> hasSameReferenceAs(interceptor)).count() > 0;
+		}
+		return i == this;
+	}
+
+	public Router getRouter() { //wird von ReadRulesConfigurationTest aufgerufen.
+		return router;
+	}
+
+}
