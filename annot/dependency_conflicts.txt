@@ -1,0 +1,130 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.membrane-soa:service-proxy-annot:jar:4.6.2-SNAPSHOT
+[WARNING] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.apache.maven.plugins:maven-enforcer-plugin @ org.membrane-soa:service-proxy-annot:[unknown-version], c:\Atos\cedre-proxy\annot\pom.xml, line 87, column 12
+[WARNING] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.apache.maven.plugins:maven-javadoc-plugin @ org.membrane-soa:service-proxy-parent:4.6.2-SNAPSHOT, c:\Atos\cedre-proxy\pom.xml, line 535, column 12
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ----------------< org.membrane-soa:service-proxy-annot >----------------
+[INFO] Building service-proxy-annot 4.6.2-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.4.1:enforce (default-cli) @ service-proxy-annot ---
+[WARNING] 
+Dependency convergence error for org.springframework:spring-core:5.1.0.RELEASE paths to dependency are:
++-org.membrane-soa:service-proxy-annot:4.6.2-SNAPSHOT
+  +-org.springframework:spring-core:5.1.0.RELEASE
+and
++-org.membrane-soa:service-proxy-annot:4.6.2-SNAPSHOT
+  +-org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE
+    +-org.springframework.boot:spring-boot-starter:2.0.5.RELEASE
+      +-org.springframework.boot:spring-boot:2.0.5.RELEASE
+        +-org.springframework:spring-core:4.2.3.RELEASE
+and
++-org.membrane-soa:service-proxy-annot:4.6.2-SNAPSHOT
+  +-org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE
+    +-org.springframework.boot:spring-boot-starter:2.0.5.RELEASE
+      +-org.springframework:spring-core:4.2.3.RELEASE
+and
++-org.membrane-soa:service-proxy-annot:4.6.2-SNAPSHOT
+  +-org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE
+    +-org.springframework:spring-web:4.2.3.RELEASE
+      +-org.springframework:spring-aop:4.2.3.RELEASE
+        +-org.springframework:spring-core:4.2.3.RELEASE
+and
++-org.membrane-soa:service-proxy-annot:4.6.2-SNAPSHOT
+  +-org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE
+    +-org.springframework:spring-web:4.2.3.RELEASE
+      +-org.springframework:spring-beans:4.2.3.RELEASE
+        +-org.springframework:spring-core:4.2.3.RELEASE
+and
++-org.membrane-soa:service-proxy-annot:4.6.2-SNAPSHOT
+  +-org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE
+    +-org.springframework:spring-web:4.2.3.RELEASE
+      +-org.springframework:spring-context:4.2.3.RELEASE
+        +-org.springframework:spring-core:4.2.3.RELEASE
+and
++-org.membrane-soa:service-proxy-annot:4.6.2-SNAPSHOT
+  +-org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE
+    +-org.springframework:spring-web:4.2.3.RELEASE
+      +-org.springframework:spring-core:4.2.3.RELEASE
+and
++-org.membrane-soa:service-proxy-annot:4.6.2-SNAPSHOT
+  +-org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE
+    +-org.springframework:spring-webmvc:4.2.3.RELEASE
+      +-org.springframework:spring-core:4.2.3.RELEASE
+and
++-org.membrane-soa:service-proxy-annot:4.6.2-SNAPSHOT
+  +-org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE
+    +-org.springframework:spring-webmvc:4.2.3.RELEASE
+      +-org.springframework:spring-expression:4.2.3.RELEASE
+        +-org.springframework:spring-core:4.2.3.RELEASE
+
+[WARNING] Rule 0: org.apache.maven.plugins.enforcer.DependencyConvergence failed with message:
+Failed while enforcing releasability the error(s) are [
+Dependency convergence error for org.springframework:spring-core:5.1.0.RELEASE paths to dependency are:
++-org.membrane-soa:service-proxy-annot:4.6.2-SNAPSHOT
+  +-org.springframework:spring-core:5.1.0.RELEASE
+and
++-org.membrane-soa:service-proxy-annot:4.6.2-SNAPSHOT
+  +-org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE
+    +-org.springframework.boot:spring-boot-starter:2.0.5.RELEASE
+      +-org.springframework.boot:spring-boot:2.0.5.RELEASE
+        +-org.springframework:spring-core:4.2.3.RELEASE
+and
++-org.membrane-soa:service-proxy-annot:4.6.2-SNAPSHOT
+  +-org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE
+    +-org.springframework.boot:spring-boot-starter:2.0.5.RELEASE
+      +-org.springframework:spring-core:4.2.3.RELEASE
+and
++-org.membrane-soa:service-proxy-annot:4.6.2-SNAPSHOT
+  +-org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE
+    +-org.springframework:spring-web:4.2.3.RELEASE
+      +-org.springframework:spring-aop:4.2.3.RELEASE
+        +-org.springframework:spring-core:4.2.3.RELEASE
+and
++-org.membrane-soa:service-proxy-annot:4.6.2-SNAPSHOT
+  +-org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE
+    +-org.springframework:spring-web:4.2.3.RELEASE
+      +-org.springframework:spring-beans:4.2.3.RELEASE
+        +-org.springframework:spring-core:4.2.3.RELEASE
+and
++-org.membrane-soa:service-proxy-annot:4.6.2-SNAPSHOT
+  +-org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE
+    +-org.springframework:spring-web:4.2.3.RELEASE
+      +-org.springframework:spring-context:4.2.3.RELEASE
+        +-org.springframework:spring-core:4.2.3.RELEASE
+and
++-org.membrane-soa:service-proxy-annot:4.6.2-SNAPSHOT
+  +-org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE
+    +-org.springframework:spring-web:4.2.3.RELEASE
+      +-org.springframework:spring-core:4.2.3.RELEASE
+and
++-org.membrane-soa:service-proxy-annot:4.6.2-SNAPSHOT
+  +-org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE
+    +-org.springframework:spring-webmvc:4.2.3.RELEASE
+      +-org.springframework:spring-core:4.2.3.RELEASE
+and
++-org.membrane-soa:service-proxy-annot:4.6.2-SNAPSHOT
+  +-org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE
+    +-org.springframework:spring-webmvc:4.2.3.RELEASE
+      +-org.springframework:spring-expression:4.2.3.RELEASE
+        +-org.springframework:spring-core:4.2.3.RELEASE
+]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 6.215 s
+[INFO] Finished at: 2018-10-16T16:17:54+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-enforcer-plugin:1.4.1:enforce (default-cli) on project service-proxy-annot: Some Enforcer rules have failed. Look above for specific messages explaining why the rule failed. -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

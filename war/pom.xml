@@ -17,13 +17,25 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 	</parent>
 
 	<dependencies>
+
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-web</artifactId>
+		    <version>2.0.5.RELEASE</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.membrane-soa</groupId>
 			<artifactId>service-proxy-annot</artifactId>
+			<relativePath>../annot/pom.xml</relativePath>
+			<version>4.6.2-SNAPSHOT</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.membrane-soa</groupId>
 			<artifactId>service-proxy-core</artifactId>
+			<relativePath>../core/pom.xml</relativePath>
+			<version>4.6.2-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
@@ -42,37 +54,12 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 			<artifactId>commons-logging</artifactId>
 		</dependency>
 		
-		<!--
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-beans</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-		</dependency>
-		-->
-		
-		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-web</artifactId>
-		    <version>2.0.5.RELEASE</version>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-tomcat -->
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-tomcat</artifactId>
-		    <version>2.0.5.RELEASE</version>
-		    <scope>provided</scope>
-		</dependency>
-		
 		<dependency>
 			<groupId>org.membrane-soa</groupId>
 			<artifactId>service-proxy-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -84,6 +71,14 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 	<build>
 		<plugins>
 			<!-- Eclipse project -->
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-enforcer-plugin</artifactId>
+		        <version>1.4.1</version>
+		        <configuration>
+		            <rules><dependencyConvergence></dependencyConvergence></rules>
+		        </configuration>
+		    </plugin>
 			<plugin>
 	            <groupId>org.springframework.boot</groupId>
 	            <artifactId>spring-boot-maven-plugin</artifactId>

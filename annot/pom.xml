@@ -18,37 +18,82 @@
 	<artifactId>service-proxy-annot</artifactId>
 	<name>${project.artifactId}</name>
 	<packaging>jar</packaging>
-
+	<version>4.6.2-SNAPSHOT</version>
+	<!--
 	<parent>
 		<groupId>org.membrane-soa</groupId>
 		<artifactId>service-proxy-parent</artifactId>
 		<relativePath>../pom.xml</relativePath>
 		<version>4.6.2-SNAPSHOT</version>
 	</parent>
+-->
+	<parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.5.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 
 	<dependencies>
+
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-beans</artifactId>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-web</artifactId>
+		    <version>2.0.5.RELEASE</version>
 		</dependency>
+
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-properties-migrator</artifactId>
+			<scope>runtime</scope>
+			<version>2.0.5.RELEASE</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.apache.aries.blueprint</groupId>
 			<artifactId>blueprint-parser</artifactId>
 			<scope>provided</scope>
+			<version>1.6.0</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.apache.aries.blueprint</groupId>
 			<artifactId>org.apache.aries.blueprint.api</artifactId>
 			<scope>provided</scope>
+			<version>1.0.1</version>
 		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-enforcer-plugin</artifactId>
+		        <version>1.4.1</version>
+		        <configuration>
+		            <rules><dependencyConvergence></dependencyConvergence></rules>
+		        </configuration>
+		    </plugin>
+			<plugin>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-maven-plugin</artifactId>
+	            <version>2.0.5.RELEASE</version>
+	            <executions>
+	                <execution>
+	                    <goals>
+	                        <goal>repackage</goal>
+	                    </goals>
+	                </execution>
+	            </executions>
+	        </plugin>
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-enforcer-plugin</artifactId>
+		        <version>1.4.1</version>
+		        <configuration>
+		            <rules><dependencyConvergence></dependencyConvergence></rules>
+		        </configuration>
+		    </plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
